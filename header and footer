@@ -1,0 +1,199 @@
+<header class="sticky-header bg-[#3035a3]">
+        <div class="container mx-auto py-4 px-4 flex justify-between items-center">
+    
+            <!-- Logo -->
+            <div class="relative">
+                <img src="../Assets/logo.png" alt="Logo" class="rounded-2xl w-14 h-14">
+            </div>    
+            <!-- Search Box -->
+            <div class="md:flex justify-end items-center space-x-4 flex-1 mx-6">
+                <div class="flex justify-center items-center">
+                    <input type="search" placeholder="Search" class="w-full rounded-l-2xl px-4 py-2 focus:outline-none">
+                    <img src="../Assets/icons8-search-ios-17-filled/icons8-search-50.png" alt="search" class="image">
+                </div>
+            </div>   
+            <!-- Navigation Links -->
+            <nav class="nav md:flex hidden items-center space-x-2">
+                <ul class="text-xl flex space-x-2">
+                    <li><a href="../M_website/login.html" class="nav-link">Sign in</a></li>
+                    <li><a href="#about" class="nav-link">Orders</a></li>
+                    <li class="relative">
+                        <a href="./cart.html" class="nav-link text-white">
+                            <span>Cart</span>
+                        </a>
+                        <span class="bg-black text-white rounded-full w-5 h-5 flex items-center justify-center absolute -top-0 -right-0">0</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="md:hidden flex justify-center items-center">
+                <!-- Mobile Sidebar -->
+                <ion-icon id="openButton" name="menu-outline">
+                    <button class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </ion-icon>
+                <div class="sideBar" id="sideBar">
+                    <a id="close">&times;</a>
+                    <ul class="text-xl space-x-2">
+                        <li><a href="#" class="nav-link">Sign in</a></li>
+                        <li><a href="#" class="nav-link">Orders</a></li>
+                        <li><a href="#" class="nav-link">Cart</a></li>
+                    </ul>
+                </div>
+            </div>       
+        </div>
+    </header>
+
+  <css program>
+
+  /*header starting*/
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #6476f0;
+    padding: 10px;
+}
+.image{
+    height: 40px;
+    padding: 10px;
+    border-bottom-right-radius: 16px;
+    border-top-right-radius: 16px;
+    display: inline-block;
+    background-color: white;
+}
+/* nav bar*/
+.nav{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.nav li {
+    position: relative;
+}
+.nav a{
+    white-space: nowrap;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.nav li:hover a {
+    color: #e64c4c;
+}
+.nav-link::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e64c4c;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+}
+.nav-link:hover:before{
+    visibility: visible;
+    width: 100%;
+}
+
+/*  mobile sidebar starting*/
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: whitesmoke;
+}
+.sideBar {
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    background-color: #6476f0;
+    right: -200px;
+    top: 0;
+    z-index: 1;
+    transition: 0.3s;
+    display: block;
+}
+.sideBar #close {
+    float: left;
+    margin-left: 10px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+.sideBar ul{
+    list-style: none;
+    margin-top: 15vh;
+}
+.sideBar li {
+    font-family: "Raleway", sans-serif;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.sideBar li a {
+    color: white;
+    text-decoration: none;
+    transform: 0.2s !important;
+}
+.sideBar li:hover a {
+    color: whitesmoke !important;
+}
+.sideBar li:hover {
+    background-color: #167a8b;
+}
+#openButton {
+    font-size: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}         
+/*  mobile sidebar ending*/
+
+/*header ending*/
+
+<java script>
+
+//sidebar while mobile layout start//
+const sideBar = document.getElementById("sideBar");
+const openButton = document.getElementById("openButton");
+const closeBar = document.getElementById("close");
+
+let sideBarState = false;
+// Function to open/close sidebar
+function toggleSideBar() {
+    if (!sideBarState) {
+        sideBar.style.right = "0"; 
+        sideBarState = true;
+    } else {
+        sideBar.style.right = "-220px";
+        sideBarState = false;
+    }
+}
+// Open sidebar when openButton is clicked
+openButton.addEventListener("click", () => {
+    toggleSideBar();
+});
+// Close sidebar when close button is clicked
+closeBar.addEventListener("click", () => {
+    sideBar.style.right = "-220px";
+    sideBarState = false;
+});
+//sidebar while mobile layout end//
