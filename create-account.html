@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./homepage.css" rel="stylesheet">
+    <style>
+        /*login page*/
+        .login{
+            background-image: url(./Assets/-for-desktop-wallpaper.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container2{
+            border: 2px solid white;
+             backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen login">
+    <div class="p-6 md:p-8  rounded-xl shadow-md max-w-md w-full container2">
+        <div class="flex items-center justify-center mb-4">
+            <img src="./Assets/logo.png" alt="Logo" class="h-16 md:h-20 rounded-2xl">
+        </div>
+        <h2 class=" text-white text-2xl font-bold mb-4 text-center">register</h2>
+        <form id="register-form">
+            <div class="mb-4">
+                <label for="mobile-number" class="block text-xl font-medium text-white">Mobile Number</label>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Enter your mobile number"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-xl font-medium text-white">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                    required>
+                <p id="password-error" class="mt-1 text-sm text-red-600 hidden">Password must be at least 8 characters long, including one uppercase letter, one number, and one special character.</p>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Register
+            </button>
+        </form>
+        <div>
+            <p class=" text-white text-sm mt-2">By continuing, you agree to <a href="#" class="text-blue-600">Conditions of Use and Privacy Notice.</a></p>
+        </div>
+        <p class="pb-5 text-white text-center">or</p>
+        <div class="flex flex-row justify-center items-center space-x-4">
+            <!-- Google Sign-In -->
+            <div>
+                <button id="google">
+                    <img src="./Assets/gift1.jpg" alt="google" class="w-16">
+                </button>
+            </div>
+            <!-- Apple Sign-In -->
+            <div>
+                <button id="apple-sign-in">
+                    <img src="./Assets/gift1.jpg" alt="google" class="w-16">
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Handle Mobile Registration
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+
+            const mobileNumber = document.getElementById('mobile-number').value;
+            const password = document.getElementById('password').value;
+            const passwordError = document.getElementById('password-error');
+
+            // Validate Mobile Number
+            const mobileNumberPattern = /^[0-9]{10}$/; // Example pattern for a 10-digit number
+            if (!mobileNumberPattern.test(mobileNumber)) {
+                alert('Invalid mobile number. Please enter a 10-digit number.');
+                return;
+            }
+
+            // Validate Password
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                passwordError.classList.remove('hidden');
+                return;
+            } else {
+                passwordError.classList.add('hidden');
+            }
+
+            // Perform registration logic here
+            alert(`Mobile number ${mobileNumber} registered successfully!`);
+            
+            // Redirect to profile page
+            window.location.href = 'profile.html'; // Change 'profile.html' to your actual profile page URL
+        });
+
+        // Handle Google Sign-In
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            alert('Signed in as: ' + profile.getName());
+            // Redirect to profile page after successful sign-in
+            window.location.href = 'profile.html'; // Change 'profile.html' to your actual profile page URL
+        }
+
+        // Handle Apple Sign-In (Placeholder)
+        document.getElementById('apple-sign-in').addEventListener('click', function() {
+            alert('Apple Sign-In clicked! (Replace with actual Apple Sign-In implementation)');
+            // Redirect to profile page after successful sign-in (Placeholder)
+            window.location.href = 'profile.html'; // Change 'profile.html' to your actual profile page URL
+        });
+    </script>
+</body>
+</html>

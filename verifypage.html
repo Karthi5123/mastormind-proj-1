@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="" rel="stylesheet">
+    <style>
+        /*login page*/
+        .login{
+            background-image: url(./Assets/-for-desktop-wallpaper.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container2{
+            border: 2px solid white;
+             backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <body class="bg-gray-100 flex justify-center items-center h-screen login">
+        <div class="p-8 rounded-xl shadow-md max-w-md w-full container2">
+            <div class="flex items-center justify-center">
+                <img src="./Assets/logo.png" alt="Logo" class="h-[70px] rounded-2xl mb-4">
+            </div>
+            <h2 class="text-xl font-bold mb-4 text-white">Enter verification code</h2>
+            <form id="loginForm" class="space-y-4">
+                <div class="flex flex-col justify-between"> 
+                    <label for="username" class="block text-md font-medium text-white">For your security,we have send your code to the given number :</label>
+                    <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 
+                    rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        required>    
+                </div>
+                <div class="flex flex-row justify-between text-white">
+                    <a href="#" class="text-[#6476f0]">Resend the code</a>
+                </div>
+                <div>
+                    <button type="submit"
+                        class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">Submit code</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</body>
+</html>
